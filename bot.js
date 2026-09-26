@@ -1,6 +1,18 @@
 require('dotenv').config();
 
 const { Telegraf } = require('telegraf');
+const express = require('express');
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get('/', (_req, res) => {
+	res.status(200).send('Bot is running');
+});
+
+app.listen(port, () => {
+	console.log(`HTTP server ${port}-portda ishga tushdi.`);
+});
 
 const botToken = process.env.BOT_TOKEN;
 const adminId = Number(process.env.ADMIN_ID);
